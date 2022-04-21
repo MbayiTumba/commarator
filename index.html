@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        html {
+          box-sizing: border-box;
+        }
+        *,
+        *::before,
+        *::after {
+          box-sizing: inherit;
+        }
+        .container {
+          display: grid;
+          grid-template-columns: repeat(12, 1fr);
+          grid-template-rows: repeat(12, 1fr);
+        }
+        .text-1 {
+          grid-column: 1;
+          grid-row: 1/13;
+        }
+        .text-2 {
+          grid-column: 13;
+          grid-row: 1/13;
+        }
+        .btn {
+          background-color: #0a0a23;
+          color: #fff;
+          border: none;
+          border-radius: 10px;
+          padding: 15px;
+          min-height: 30px;
+          min-width: 120px;
+          grid-column: 7;
+          grid-row: 6;
+        }
+        textarea {
+          border: 1px solid blue;
+          width: 400px;
+          line-height: normal !important;
+          height: 100%;
+          padding: 0;
+          margin: 0;
+          resize: none;
+          outline: none;
+          overflow: auto;
+        }
+      </style>
+</head>
+
+<body>
+    <div class="container">
+      <textarea class="text-1"></textarea>
+      <button class="btn">Convert</button>
+      <textarea class="text-2"></textarea>
+    </div>
+    <script>
+      let text1 = document.querySelector(".text-1"),
+        text2 = document.querySelector(".text-2"),
+        btn = document.querySelector("button");
+
+      btn.addEventListener("click", () => {
+        // text1.select();
+        // navigator.clipboard.writeText(text1.value);
+        // alert(text1.value);
+        if (text1.value.indexOf("\n") || text1.value.indexOf(" ")) {
+          let newline = text1.value.split(/[\n, " "]/);
+          let trim = newline.filter((e) => {
+            return String(e).trim();
+          });
+          let seperator = trim.join(",");
+          text2.textContent = seperator;
+          text2.select();
+          navigator.clipboard.writeText(text2.value);
+        }
+      });
+    </script>
+  
+
+</body>
+
+
+</html>

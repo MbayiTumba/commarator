@@ -1,0 +1,23 @@
+{
+  "name": "comma-separated-value",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "deploy": "gh-pages -dist"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MbayiTumba/Comma_seperated_value.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MbayiTumba/Comma_seperated_value/issues"
+  },
+  "homepage": "https://MbayiTumba.github.io/Comma_separated_value",
+  "dependencies": {
+    "gh-pages": "^3.2.3"
+  }
+}

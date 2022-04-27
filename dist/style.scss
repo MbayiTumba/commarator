@@ -1,0 +1,144 @@
+/// Mixin to prefix several properties at once
+/// @author Kitty Giraudel
+/// @param {Map} $declarations - Declarations to prefix
+/// @param {List} $prefixes (()) - List of prefixes to print
+@mixin prefix($declarations, $prefixes: ()) {
+  @each $property, $value in $declarations {
+    @each $prefix in $prefixes {
+      #{'-' + $prefix + '-' + $property}: $value;
+    }
+    // Output standard non-prefixed declaration
+    #{$property}: $value;
+  }
+}
+html {
+  box-sizing: border-box;
+}
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+body {
+  background-color: #0e1623;
+}
+.container {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  .text-1,
+  .text-2 {
+    height: 50vh;
+  }
+  .btn {
+    position: relative;
+    background: linear-gradient(90deg, #0162c8, #55e7fc);
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    text-transform: uppercase;
+    border-radius: 10px;
+    overflow: hidden;
+    padding: 15px;
+    min-height: 30px;
+    min-width: 120px;
+    grid-column: 7;
+    grid-row: 6;
+    span {
+      position: absolute;
+      pointer-events: none;
+      background-color: #fff;
+      transform: translate(-50%, -50%);
+      border-radius: 50%;
+      animation: animate 1s linear infinite;
+    }
+    @keyframes animate {
+      0% {
+        width: 0px;
+        height: 0px;
+        opacity: 0.5;
+      }
+      100% {
+        width: 500px;
+        height: 500px;
+        opacity: 0;
+      }
+    }
+  }
+  textarea {
+    border: 1px solid blue;
+    background: #0e1623;
+    width: 400px;
+    color: #fff;
+    line-height: normal !important;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+    resize: none;
+    outline: none;
+    overflow: auto;
+  }
+  .text-1:focus,
+  .text-2:focus {
+    border: 3px solid blue;
+  }
+  .text-1::placeholder {
+    font-size: 1.2em;
+  }
+  section {
+    font-size: 4vw;
+    color: #00fe77;
+    text-align: center;
+    // text-transform: capitalize;
+    -webkit-box-reflect: below -0.45em linear-gradient(transparent, #0004);
+    z-index: 1;
+    a {
+      position: relative;
+      display: inline-block;
+    }
+    a:nth-child(1) {
+      text-transform: capitalize;
+    }
+    a:nth-child(8) {
+      text-transform: capitalize;
+    }
+    a:nth-child(12) {
+      text-transform: capitalize;
+    }
+    a:nth-child(14) {
+      text-transform: capitalize;
+    }
+    a:nth-child(19) {
+      text-transform: capitalize;
+    }
+    a:nth-child(28) {
+      text-transform: capitalize;
+    }
+  }
+}
+
+/* media query for  */
+@media screen and (max-width: 990px) {
+  .container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    .text-1,
+    .text-2 {
+      height: 40vh;
+    }
+  }
+  section {
+    color: #00fe77;
+    text-align: center;
+    -webkit-box-reflect: below -0.45em linear-gradient(transparent, #0004);
+    z-index: 1;
+    a {
+      position: relative;
+      display: inline-block;
+    }
+  }
+}
